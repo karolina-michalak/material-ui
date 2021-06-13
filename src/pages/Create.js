@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useHistory} from 'react-router-dom'
 import { Typography } from "@material-ui/core";
 import AcUnitIcon from "@material-ui/icons/AcUnit";
 import { makeStyles } from "@material-ui/core";
@@ -19,6 +20,7 @@ export default function Create() {
   const [details, setDetails] = useState("");
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +33,11 @@ export default function Create() {
       setDetailsError(true);
     }
     if (title && details) {
-      console.log(title, details);
+      fetch('  http://localhost:8000/notes', {
+        method: 'POST',
+        headers: {'Content-type': "application/json"},
+        body: JSON.stringify({title, details, category})
+      }).then(() => history.push('/'))
     }
   };
 
