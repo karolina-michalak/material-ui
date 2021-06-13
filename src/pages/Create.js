@@ -26,7 +26,7 @@ export default function Create() {
       <Typography className={classes.title} color="secondary">
        hhhhh <AcUnitIcon></AcUnitIcon>
       </Typography>
-      <Button color="secondary" variant="contained" className={classes.btn}>
+      <Button color="primary" variant="contained" className={classes.btn}>
         Submit
       </Button>
     </div>
